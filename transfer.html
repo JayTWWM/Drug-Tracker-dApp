@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Drug Transfer</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/app.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Drug Tracker</span>
+      <a href="./home.html"><button  
+        type="button"
+        class="btn btn-primary">
+        DashBoard
+      </button></a>
+      <input type="text" id="myInputer" onkeyup="searchAsset1()" placeholder="  Search" title="Serach">
+    </nav>
+
+    <div class="container">
+      <h2 class="display-4" style="color: #218f76;">Transfer Drug</h2>
+      <br />
+      <!-- transfer form -->
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+        <!-- <script>
+          function myFunction() {
+            $("#searchResulter").html("");
+              var input;
+              input = parseInt(document.getElementById("myInputer").value);
+                AssetTrackerContract.methods.getAsset(input).call((error, response) => {
+                  if (error) console.log(error);
+                  else {
+                          let row =
+                            '<tr><th scope="row">' +
+                            input +
+                            "</th>" +
+                            "<td>" +
+                            response[0] +
+                            "</td>" +
+                            "<td>" +
+                            response[1] +
+                            "</td>" +
+                            "<td>" +
+                            response[2] +
+                            "</td>" +
+                            "<td>" +
+                            response[3] +
+                            "</td>" +
+                            "<td>" +
+                            response[4] +
+                            "</td></tr>";
+              
+                          $("#searchResulter").append(row);
+                  }
+                });
+          }
+          </script>
+              <br /> -->
+              <div class="container" id="searchResulter">
+                <!-- <h1>Search Results Here</h1>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Batch No.</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Manufacturer</th>
+                      <th scope="col">Owner</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                    <tbody id="searchResulter"></tbody>
+                  </thead>
+                </table> -->
+              </div>
+            </div>
+            <div class="col">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div id="transferFrom" style="display: none">
+            <div class="form-group">
+              Enter the new details below
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                id="newOwner"
+                class="form-control"
+                placeholder="New Owner"
+              />
+            </div>
+
+            <div class="form-group">
+              <select id="newStatus" name="status" class="form-control">
+                <option name="status" value="Manufacturer">Manufacturer</option>
+                <option name="status" value="Distributor">Distributor</option>
+                <option name="status" value="Wholesaler">Wholesaler</option>
+                <option name="status" value="Supplier">Supplier</option>
+                <option name="status" value="Transporter">Transporter</option>
+                <option name="status" value="Pharma">Pharma</option>
+                <option name="status" value="Consumer">Consumer</option>
+
+              </select id="status">
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <button  
+                  type="button"
+                  class="btn btn-primary" onclick="geoFindMe()" style="float: left;">Get Location</button>
+                <p id="newLocation" style="float: left;"></p>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+              <input
+                type="text"
+                id="newQuantity"
+                class="form-control"
+                placeholder="Quantity"
+              />
+            </div>
+            <div class="form-group">
+              <button onclick="transferAsset()" class="btn btn-success">
+                Transfer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="QR"  style="display: none" class="container">
+      <h3> Put QR code here before transfer</h3>
+      <input
+      class="btn btn-primary" type="file" id="file" name="file">
+    <span id="content"></span>
+    </div>
+    <script type="text/javascript" src="js/sha.js"></script>
+    <script type="text/javascript" src="js/qrReader.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/transfer.js"></script>
+  </body>
+</html>

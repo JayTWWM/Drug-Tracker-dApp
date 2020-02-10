@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/qrcode.js"></script>
+    <script type="text/javascript" src="js/sha.js"></script>
+    <meta charset="utf-8" />
+    <title>Drug Detail</title>
+  </head>
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="/css/app.css" />
+  <script
+    src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"
+    charset="utf-8"
+  ></script>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <a href="./home.html"><button
+        type="button"
+        class="btn btn-primary">
+        DashBoard
+      </button></a>
+      <span class="navbar-brand mb-0 h1">Drug Tracker</span>
+    </nav>
+
+    <div class="container">
+      <h1 class="display-4"></h1>
+      <div id="loading-div">
+        <div class="inner-div">
+          <div id="count">
+            <h2 class="display-4" style="color: #218f76;">Search Drug</h2>
+          </div>
+        </div>
+        <div class="inner-div">
+          <img src="./images/loading.gif" alt="loading" id="loading" />
+        </div>
+      </div>
+      <!-- form -->
+      <div class="row">
+        <div class="col">
+          <input
+            type="number"
+            name="id"
+            class="form-control"
+            placeholder="Id of the drug"
+          />
+        </div>
+        <div class="col">
+          <button class="btn btn-primary" onclick="searchAsset()">
+            Search
+          </button>
+        </div>
+      </div>
+      <div id="printableArea">
+  
+  
+  
+  
+      <div class="row">
+        <div class="col">
+        <div class="lead" id="searchResult">
+          
+        </div>  
+        <div class="lead">
+          <div id="qrResult" style="height: 100px;width: 100px"></div>
+        </div>
+      </div>
+        
+        <div class="col">
+        <div id="statusHistory" style="display: none">
+            <br>
+          <h4 class="display-4" style="color: #218f76;">Status History</h4></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <center><input 
+    type="button" 
+    class="btn btn-primary" onclick="printDiv('printableArea')" value="Print invoice!" /></center>
+  <script>
+    function printDiv(divName) {
+         var printContents = document.getElementById(divName).innerHTML;
+         var originalContents = document.body.innerHTML;
+    
+         document.body.innerHTML = printContents;
+    
+         window.print();
+    
+         document.body.innerHTML = originalContents;
+    }
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/searchAsset.js"></script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Drug Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/app.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script src="./js/app.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Drug Tracker</span>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Create drug
+      </button>
+        <a href="./transfer.html">
+          <button 
+          type="button"
+          class="btn btn-primary">
+            Transfer
+          </button>
+        </a>
+        <a href="./assetDetail.html">
+          <button 
+          type="button"
+          class="btn btn-primary">
+            Drug History
+          </button>
+        </a>
+        <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="  Search" title="Serach">
+        <script>
+          function myFunction() {
+            $("#searchResult").html("");
+              var input;
+              input = parseInt(document.getElementById("myInput").value);
+                AssetTrackerContract.methods.getAsset(input).call((error, response) => {
+                  if (error) console.log(error);
+                  else {
+                          let row =
+                            '<tr><th scope="row">' +
+                            input +
+                            "</th>" +
+                            "<td>" +
+                            response[0] +
+                            "</td>" +
+                            "<td>" +
+                            response[1] +
+                            "</td>" +
+                            "<td>" +
+                            response[2] +
+                            "</td>" +
+                            "<td>" +
+                            response[3] +
+                            "</td>" +
+                            "<td>" +
+                            response[4] +
+                            "</td></tr>";
+              
+                          $("#searchResult").append(row);
+                  }
+                });
+
+          }
+          </script> -->
+    </nav>
+    
+    <div class="container">
+      <h2
+        class="display-4"
+        style="
+    color: #218f76;"
+      >
+        <div id="loading-div">
+          <div class="inner-div"><div id="count"></div></div>
+          <div class="inner-div">
+            <img src="./images/loading.gif" alt="loading" id="loading" />
+          </div>
+        </div>
+      </h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Batch No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Location</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- code for modal -->
+
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Create a new drug
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="batchNo"
+                    class="form-control"
+                    placeholder="Batch Number"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="desc"
+                    class="form-control"
+                    placeholder="Description"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="quantity"
+                    class="form-control"
+                    placeholder="Quantity"
+                  />
+                </div>
+                <!-- <div class="form-group">
+                  <input
+                    type="text"
+                    name="owner"
+                    class="form-control"
+                    placeholder="Manufacturer"
+                  />
+                </div> -->
+                <div class="form-group">
+                  <div class="form-group">
+                    <button  
+                  type="button"
+                  class="btn btn-primary" onclick="geoFindMe()" style="float: left;">Get Location</button>
+                    <p id="status" style="float: left;"></p>
+                </div>
+                <br>
+                <!-- change -->
+                <!-- <div class="form-group">
+                  <input
+                    type="text"
+                    name="status"
+                    class="form-control"
+                    placeholder="Current Status"
+                  /> 
+                  <select id="status" name="status" class="form-control">
+                    <option name="status" value="Manufacturer">Manufacturer</option>
+                    <option name="status" value="Distributor">Distributor</option>
+                    <option name="status" value="Wholesaler">Wholesaler</option>
+                    <option name="status" value="Supplier">Supplier</option>
+                    <option name="status" value="Transporter">Transporter</option>
+                    <option name="status" value="Pharma">Pharma</option>
+                    <option name="status" value="Consumer">Consumer</option>
+
+                  </select id="status">
+                </div> -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="createNewAsset()">
+                Create
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container">
+      <h1>Search Results Here</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Batch No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Location</th>
+          </tr>
+          <tbody id="searchResult"></tbody>
+        </thead>
+      </table>
+    </div> -->
+  </body>
+</html>
