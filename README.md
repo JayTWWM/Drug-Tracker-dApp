@@ -1,4 +1,4 @@
-# Asset-Tracker
+# Drug-Tracker
 
 This is a decentralized supply chain app for drug tracking.<br>
 Large no. of companies have been using the blockchain technology for supply chain applications. This factor bolsters the market
